@@ -1,3 +1,5 @@
+<img src="docs/assets/logo_greencode.png" alt="Banner do projeto" style="width:100%;">
+
 # Greencode
 
 Aplicação de linha de comando (CLI) em Node.js e TypeScript para apoiar a gestão da logística reversa de resíduos eletrônicos.
