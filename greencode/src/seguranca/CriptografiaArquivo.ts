@@ -23,7 +23,7 @@ export class CriptografiaArquivo {
       ]).toString('hex')
     );
   }
-
+// arthur
   decifrar(dadosCifrados: string, chave: string) {
     const [ivHex, dataHex] = dadosCifrados.split(':');
 

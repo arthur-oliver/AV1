@@ -160,3 +160,5 @@ OBSERVAÇÕES
 
 - Comandos não permitidos pelo papel atual retornarão:
   [ERRO] Permissão insuficiente.
+  
+//arthur oliver rossi

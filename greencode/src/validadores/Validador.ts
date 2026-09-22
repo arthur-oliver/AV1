@@ -7,3 +7,4 @@ export abstract class Validador {
     return this.mensagemErro;
   }
 }
+//rossi

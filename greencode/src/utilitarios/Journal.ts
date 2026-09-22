@@ -25,7 +25,7 @@ export class Journal {
     return id;
   }
   concluir(id:string,operacao:string,entidade:string,usuario='sistema') {
-    this.gravar({id,timestamp:new Date().toISOString(),phase:'COMMIT',operacao,entidade,dadosAntes:null,dadosDepois:null,usuarioResponsavel:usuario});
+    this.gravar({id,timestamp:new Date().toISOString(),phase:'COMMIT',operacao,entidade,dadosAntes:null,dadosDepois:null,usuarioResponsavel:usuario}); //rossi
   }
   registrar(operacao:string,entidade:string,antes:unknown,depois:unknown,usuario='sistema') {
     const id=this.iniciar(operacao,entidade,antes,depois,usuario);

@@ -44,3 +44,4 @@ export enum StatusRastreamento {
   DESCARTE_SEGURO = 'DESCARTE_SEGURO',
   BAIXA_DEFINITIVA = 'BAIXA_DEFINITIVA'
 }
+//oliver

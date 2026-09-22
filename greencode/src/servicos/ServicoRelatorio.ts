@@ -46,7 +46,7 @@ export class ServicoRelatorio {
       2
     );
   }
-
+// arthur
   gerarRelatorioPorStatus(
     status: StatusRastreamento
   ) {

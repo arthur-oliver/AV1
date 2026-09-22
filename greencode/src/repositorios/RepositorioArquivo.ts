@@ -5,7 +5,7 @@ import { CriptografiaArquivo } from '../seguranca/CriptografiaArquivo';
 import { Journal } from '../utilitarios/Journal';
 
 export class RepositorioArquivo {
-  constructor(public diretorioBase:string, public criptografia:CriptografiaArquivo, private chave:string, private journal?:Journal) {
+  constructor(public diretorioBase:string, public criptografia:CriptografiaArquivo, private chave:string, private journal?:Journal) { // arthur
     fs.mkdirSync(diretorioBase,{recursive:true});
   }
   private p(n:string){ return path.join(this.diretorioBase,n+'.enc'); }

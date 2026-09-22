@@ -63,7 +63,7 @@ export class ServicoLote {
 
     this.repositorio.salvarEntidade('lotes', l);
   }
-
+// arthur
   buscar(id: string) {
     const x: any = this.repositorio.carregarEntidade('lotes', id);
 

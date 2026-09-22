@@ -78,7 +78,7 @@ if (fs.existsSync(cfg)) {
         x.papel
       )
   );
-
+//rossi
   let alterouCredenciais = false;
 
   for (const usuario of usuariosPadrao) {

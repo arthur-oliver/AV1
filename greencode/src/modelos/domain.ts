@@ -199,7 +199,7 @@ export class Lote {
   }
 
   gerarRelatorioTriagem() {
-    return `Lote ${this.id}: ${this.equipamentos.length} equipamento(s), ${this.calcularPesoTotal().toFixed(2)} kg, status ${this.statusProcessamento}.`;
+    return `Lote ${this.id}: ${this.equipamentos.length} equipamento(s), ${this.calcularPesoTotal().toFixed(2)} kg, status ${this.statusProcessamento}.`; //oliver
   }
 }
 
