@@ -1,82 +1,162 @@
 COMANDOS - GREENCODE
 
+==================================================
+
+TERMINAL CMD:
+
 1. ENTRAR NA PASTA DO PROJETO
 cd "...\greencode"
 
 2. INSTALAR DEPENDÊNCIAS
 npm install
 
-3. COMPILAR O PROJETO
+3. COMPILAR
 npm run build
 
 4. INICIAR O SISTEMA
 npm start
 
---------------------------------------------------
-TESTES DA CLI
---------------------------------------------------
+==================================================
 
-LOGIN
+5. USUÁRIOS
+
+ADMINISTRADOR
+Usuário: admin
+Senha: Admin@123
+
+OPERADOR DE CADASTRO
+Usuário: operador
+Senha: Operador@123
+
+GESTOR DE ALMOXARIFADO
+Usuário: gestor
+Senha: Gestor@123
+
+AUDITOR
+Usuário: auditor
+Senha: Auditor@123
+
+==================================================
+
+6. LOGIN
+
+LOGIN ADMINISTRADOR
 login --usuario admin --senha Admin@123
 
-SAIR DA SESSÃO
+
+LOGIN OPERADOR
+login --usuario operador --senha Operador@123
+
+
+LOGIN GESTOR
+login --usuario gestor --senha Gestor@123
+
+
+LOGIN AUDITOR
+login --usuario auditor --senha Auditor@123
+
+==================================================
+
+7. SAIR DA SESSÃO
 logout
 
---------------------------------------------------
-ORGANIZAÇÃO
---------------------------------------------------
+==================================================
+
+8. ORGANIZAÇÕES
 
 CRIAR ORGANIZAÇÃO
+Somente ADMINISTRADOR e OPERADOR_CADASTRO.
 org criar --razao "Empresa Teste" --cnpj 11222333000181 --ie 123456789 --endereco "Rua Teste, 100" --telefone 11999999999 --email teste@empresa.com --vencimento 10 --valor 500
 
 LISTAR ORGANIZAÇÕES
+TODOS os usuários.
 org listar
 
---------------------------------------------------
-LOTE
---------------------------------------------------
+==================================================
+
+9. LOTES
 
 CRIAR LOTE
+ADMINISTRADOR e GESTOR_ALMOXARIFADO.
 lote criar --org ID_DA_ORGANIZACAO --nf NF001 --transp "Transportadora Teste" --data 2026-09-22
 
-ADICIONAR EQUIPAMENTO AO LOTE
+ADICIONAR EQUIPAMENTO
+ADMINISTRADOR e GESTOR_ALMOXARIFADO.
 lote add-equip --lote ID_DO_LOTE --tipo NOTEBOOK --marca Dell --modelo Latitude --peso 2 --ano 2024
 
 FAZER TRIAGEM
+ADMINISTRADOR e GESTOR_ALMOXARIFADO.
 lote triagem --lote ID_DO_LOTE
 
---------------------------------------------------
-EQUIPAMENTO
---------------------------------------------------
+==================================================
+
+10. EQUIPAMENTOS
 
 RASTREAR EQUIPAMENTO
+ADMINISTRADOR, GESTOR_ALMOXARIFADO e AUDITOR.
 equip rastrear --id ID_DO_EQUIPAMENTO
 
 ALTERAR STATUS
+ADMINISTRADOR e GESTOR_ALMOXARIFADO.
 equip status --id ID_DO_EQUIPAMENTO --status AGUARDANDO_DESMONTE
 
---------------------------------------------------
-RELATÓRIOS
---------------------------------------------------
+==================================================
+
+11. RELATÓRIOS
 
 RELATÓRIO POR STATUS
+ADMINISTRADOR, GESTOR_ALMOXARIFADO e AUDITOR.
 relatorio status --status AGUARDANDO_DESMONTE
 
 RELATÓRIO POR ORGANIZAÇÃO
+Todos os usuários.
 relatorio org --org ID_DA_ORGANIZACAO --inicio 2026-01-01 --fim 2026-12-31
 
---------------------------------------------------
-ENCERRAR
---------------------------------------------------
+==================================================
+
+12. TESTE DE PERMISSÕES
+
+TESTAR ADMINISTRADOR
+login --usuario admin --senha Admin@123
+
+TESTAR OPERADOR
+logout
+login --usuario operador --senha Operador@123
+
+
+TESTAR GESTOR
+logout
+login --usuario gestor --senha Gestor@123
+
+
+TESTAR AUDITOR
+logout
+login --usuario auditor --senha Auditor@123
+
+==================================================
+
+13. ENCERRAR O SISTEMA
 
 logout
 sair
 
+==================================================
 
 OBSERVAÇÕES
-- Execute os comandos depois de aparecer: greencode>
-- Substitua ID_DA_ORGANIZACAO pelo ID retornado ao criar/listar a organização.
+
+- Execute os comandos depois de aparecer:
+  greencode>
+
+- Substitua ID_DA_ORGANIZACAO pelo ID retornado ao criar ou listar a organização.
+
 - Substitua ID_DO_LOTE pelo ID retornado ao criar o lote.
+
 - Substitua ID_DO_EQUIPAMENTO pelo ID retornado ao adicionar o equipamento.
-- Se quiser apenas testar o login, use:
-  login --usuario admin --senha Admin@123
+
+- O master.json é criado automaticamente na primeira execução.
+
+- Se o master.json já existir antes da alteração dos usuários,
+  faça backup e remova-o para que o novo provisionamento seja executado.
+
+- Comandos não permitidos pelo papel atual retornarão:
+  [ERRO] Permissão insuficiente.

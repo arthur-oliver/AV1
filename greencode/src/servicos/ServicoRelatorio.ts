@@ -1,2 +1,92 @@
-import {RepositorioArquivo} from '../repositorios/RepositorioArquivo';import {StatusRastreamento} from '../modelos/enums';
-export class ServicoRelatorio {constructor(private repositorio:RepositorioArquivo){} gerarRelatorioPorOrganizacao(id:string,periodo:{inicio:Date,fim:Date}){const lotes=this.repositorio.listarEntidades('lotes').filter((l:any)=>l.organizacaoId===id&&new Date(l.dataEntrada)>=periodo.inicio&&new Date(l.dataEntrada)<=periodo.fim);return JSON.stringify({organizacaoId:id,lotes,totalEquipamentos:lotes.reduce((s:any,l:any)=>s+l.equipamentos.length,0),pesoTotal:lotes.reduce((s:any,l:any)=>s+l.equipamentos.reduce((a:any,e:any)=>a+e.pesoQuilogramas,0),0)},null,2)} gerarRelatorioPorStatus(status:StatusRastreamento){const e=this.repositorio.listarEntidades('equipamentos').filter((x:any)=>x.statusRastreamento===status);return JSON.stringify(e,null,2)} gerarRelatorioFinanceiro(periodo:{inicio:Date,fim:Date}){const o=this.repositorio.listarEntidades('organizacoes').filter((x:any)=>new Date(x.dataCadastro)>=periodo.inicio&&new Date(x.dataCadastro)<=periodo.fim);const total=o.reduce((s:any,x:any)=>s+Number(x.contratoVigente?.valorMensal||0),0);return `Relatório financeiro\nOrganizações: ${o.length}\nValor mensal contratado: R$ ${total.toFixed(2)}`} }
+import { RepositorioArquivo } from '../repositorios/RepositorioArquivo';
+import { StatusRastreamento } from '../modelos/enums';
+
+export class ServicoRelatorio {
+  constructor(
+    private repositorio: RepositorioArquivo
+  ) {}
+
+  gerarRelatorioPorOrganizacao(
+    id: string,
+    periodo: {
+      inicio: Date;
+      fim: Date;
+    }
+  ) {
+    const lotes = this.repositorio
+      .listarEntidades('lotes')
+      .filter(
+        (l: any) =>
+          l.organizacaoId === id &&
+          new Date(l.dataEntrada) >= periodo.inicio &&
+          new Date(l.dataEntrada) <= periodo.fim
+      );
+
+    return JSON.stringify(
+      {
+        organizacaoId: id,
+        lotes,
+        totalEquipamentos: lotes.reduce(
+          (s: any, l: any) =>
+            s + l.equipamentos.length,
+          0
+        ),
+        pesoTotal: lotes.reduce(
+          (s: any, l: any) =>
+            s +
+            l.equipamentos.reduce(
+              (a: any, e: any) =>
+                a + e.pesoQuilogramas,
+              0
+            ),
+          0
+        )
+      },
+      null,
+      2
+    );
+  }
+
+  gerarRelatorioPorStatus(
+    status: StatusRastreamento
+  ) {
+    const e = this.repositorio
+      .listarEntidades('equipamentos')
+      .filter(
+        (x: any) =>
+          x.statusRastreamento === status
+      );
+
+    return JSON.stringify(e, null, 2);
+  }
+
+  gerarRelatorioFinanceiro(
+    periodo: {
+      inicio: Date;
+      fim: Date;
+    }
+  ) {
+    const o = this.repositorio
+      .listarEntidades('organizacoes')
+      .filter(
+        (x: any) =>
+          new Date(x.dataCadastro) >=
+            periodo.inicio &&
+          new Date(x.dataCadastro) <=
+            periodo.fim
+      );
+
+    const total = o.reduce(
+      (s: any, x: any) =>
+        s +
+        Number(
+          x.contratoVigente?.valorMensal || 0
+        ),
+      0
+    );
+
+    return `Relatório financeiro
+Organizações: ${o.length}
+Valor mensal contratado: R$ ${total.toFixed(2)}`;
+  }
+}
