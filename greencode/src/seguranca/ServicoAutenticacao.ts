@@ -46,7 +46,7 @@ export class ServicoAutenticacao implements Autenticavel {
       usuario,
       c.papel,
       new Date(),
-      new Date(Date.now() + 30 * 60 * 1000)
+      new Date(Date.now() + 60 * 60 * 1000)
     );
 
     this.sessoesAtivas.push(s);

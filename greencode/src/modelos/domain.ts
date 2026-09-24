@@ -41,7 +41,7 @@ export class Sessao {
   }
 
   renovar() {
-    this.expiracao = new Date(Date.now() + 30 * 60 * 1000);
+    this.expiracao = new Date(Date.now() + 60 * 60 * 1000);
   }
 }
 
