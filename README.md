@@ -5,7 +5,7 @@
 Aplicação de linha de comando (CLI) em Node.js e TypeScript para apoiar a gestão da logística reversa de resíduos eletrônicos.
 
 ## Documentação
-[Acesse a Documentação!](./docs)
+[Acesse a Documentação Técnica!](./docs/docs.md)
 
 ## Requisitos para executar
 
