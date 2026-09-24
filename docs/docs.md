@@ -33,6 +33,3 @@ Administrador: configuração/gestão global. Operador de cadastro: organizaçõ
 
 ## 8. Testes
 Os testes cobrem validação de CNPJ, data de entrada e cálculo de peso de lote. A jornada completa recomendada é: provisionamento → login → organização → lote → equipamento → triagem → movimentações/rastreamento → relatório.
-
-## 9. Limitações conhecidas
-O enunciado menciona fábricas para criação de objetos compostos, mas o UML fornecido não apresenta uma classe Factory explícita. A implementação utiliza serviços/fábricas internas para criação onde necessário. Para uma versão estritamente alinhada ao requisito, pode-se acrescentar `LoteFactory` e `EquipamentoFactory` ao UML.
